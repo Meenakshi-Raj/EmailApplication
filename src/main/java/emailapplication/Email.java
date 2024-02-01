@@ -13,15 +13,17 @@ public class Email {
     private final String newMail;
 
     public Email(String fName, String lName){
-        this.firstname = fName.toLowerCase();
-        this.lastname = lName.toLowerCase();
+        this.firstname = fName;
+        this.lastname = lName;
         this.department = this.getDept();
         this.password = this.generatePassword();
         this.newMail = this.generateMail();
+        System.out.println("New Employee registered with details: ");
+        this.getInfo();
     }
 
     private String generateMail() {
-        return firstname + "." + lastname + "@" + department.toLowerCase() + ".com";
+        return firstname.toLowerCase() + "." + lastname.toLowerCase() + "@" + department.toLowerCase() + ".com";
     }
 
     private String generatePassword() {
@@ -66,7 +68,7 @@ public class Email {
     }
 
     public void getInfo() {
-        System.out.println("Name: " + firstname + lastname);
+        System.out.println("Name: " + firstname + " " + lastname);
         System.out.println("Department: " + department);
         System.out.println("Email ID: " + newMail);
         System.out.println("Password: " + password);
@@ -74,12 +76,12 @@ public class Email {
 
     public void changePassword() {
         System.out.println("Enter current password: ");
-        String temp = scan.nextLine();
+        String temp = scan.next();
         if (temp.equals(password)) {
             System.out.println("Enter new password: ");
             this.password = scan.next();
             System.out.println("Password changed!");
-        } else {
+        }else {
             System.out.println("Unauthorized! " + '\n' +
                     "Password Change Request Rejected!");
         }
